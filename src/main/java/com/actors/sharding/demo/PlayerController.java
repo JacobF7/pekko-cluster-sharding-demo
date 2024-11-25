@@ -34,7 +34,7 @@ public class PlayerController {
     
     @GetMapping("{id}")
     public PlayerReply getPlayer(@PathVariable("id") final int id) {
-        log.info("Received getPlayer {}", id);
+        log.info("Received getPlayer Http Request {}", id);
         return playerActorRefResolver.getPlayerActorRef(id)
             .<PlayerReply>askWithStatus(replyTo -> GetPlayerCommand.builder().replyTo(replyTo).build(), DEFAULT_TIMEOUT)
             .toCompletableFuture()
@@ -44,7 +44,7 @@ public class PlayerController {
     @PostMapping("{id}")
     public void adjustBalance(@PathVariable("id") final int id,
                               @RequestBody final PlayerBalanceAdjustDto request) {
-        log.info("{} , {}", id, request);
+       
     }
     
     @Data

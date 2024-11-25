@@ -38,16 +38,17 @@ public class PlayerActor extends AbstractBehavior<PlayerCommand> {
     @Getter
     private final String entityId;
     
-    private PlayerState state;
+    private final PlayerState state;
     
     private PlayerActor(final ActorContext<PlayerCommand> context,
-                            final String entityId) {
+                        final String entityId) {
         super(context);
         
         this.entityId = entityId;
         this.state = PlayerState.builder().id(entityId).balance(0L).build();
     }
     
+    // define how actor with PLAYER_ENTITY_KEY is created in cluster
     public static void init(final ActorSystem<?> system) {
         ClusterSharding.get(system)
             .init(Entity.of(PLAYER_ENTITY_KEY, entityContext -> create(entityContext.getEntityId())));
