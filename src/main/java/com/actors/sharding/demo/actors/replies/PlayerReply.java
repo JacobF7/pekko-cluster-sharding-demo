@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import com.actors.sharding.demo.actors.serialization.CborSerializable;
@@ -19,7 +18,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 public class PlayerReply implements CborSerializable {
 
     private String id;
-    private String balance;
+    private long balance;
     private LocalDateTime timestamp;
     
 }

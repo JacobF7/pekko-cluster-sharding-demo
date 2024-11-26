@@ -68,7 +68,7 @@ public class PlayerActor extends AbstractBehavior<PlayerCommand> {
     private Behavior<PlayerCommand> onGetPlayerCommand(final GetPlayerCommand cmd) {
         log.info("Player [{}]: Received Command {}", entityId, cmd.getClass().getSimpleName());
         final var reply =
-            PlayerReply.builder().id(state.getId()).balance(state.getId()).timestamp(LocalDateTime.now()).build();
+            PlayerReply.builder().id(state.getId()).balance(state.getBalance()).timestamp(LocalDateTime.now()).build();
         cmd.getReplyTo().tell(success(reply));
         return Behaviors.same();
     }
