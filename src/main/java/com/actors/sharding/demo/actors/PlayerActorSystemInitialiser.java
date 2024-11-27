@@ -19,7 +19,7 @@ public class PlayerActorSystemInitialiser {
     private final ActorSystem<?> actorSystem;
     
     @PostConstruct
-    public void initMlmJackpotActor() {
+    public void init() {
         PlayerActor.init(actorSystem);
     }
 }
